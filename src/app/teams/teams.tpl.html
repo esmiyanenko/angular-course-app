@@ -1,0 +1,47 @@
+<div class="app-teams" ng-controller="TeamsCtrl" ng-init="init()">
+	
+	<div class="row">
+	
+		<tabset type="pills">
+
+			<tab heading="First view" ui-sref="teams.tab1" active="active"></tab>
+			<tab heading="Second view" ui-sref="teams.tab2" ></tab>
+
+		</tabset>
+
+        <div class="col-lg-8" style="padding-left: 0px">
+    		
+    		<div ui-view></div>	
+
+        </div>
+
+        <div class="col-lg-4">
+
+			<form name="addTeamForm" class="form-inline" novalidate>
+				<div class="form-group">
+					<input type="text" placeholder="add new team" class="form-control" 
+						ng-model="newTeam.name" ng-pattern="/^[A-Za-z0-9]*$/" required>
+					<button class="btn btn-primary" ng-disabled="addTeamForm.$invalid" ng-click="addTeam()">+</button>
+				</div>
+				<div class="form-group">
+					<span ng-if="addTeamForm.$invalid && !addTeamForm.$pristine" class="label label-danger">Latin letters and numbers only</span>
+				</div>
+			</form>
+
+			<accordion>
+    			<accordion-group  ng-repeat="team in teams" heading="{{team.name}}" is-open="team.isOpen" ng-click="clickTeamHandler(team)">
+    				<ul ng-if="team.members.length">
+    					<li ng-repeat="member in team.members">
+    						{{member.name}}
+    						<i class="pull-right glyphicon glyphicon-remove-sign" ng-click="removeMemberFromTeam(team.name, member)"></i>
+    					</li>
+    				</ul>
+    				<span ng-if="!team.members.length">Team is empty</span>
+    			</accordion-group>
+  			</accordion>
+
+        </div>
+
+	</div>
+
+</div>

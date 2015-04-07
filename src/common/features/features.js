@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('awesome-app.common.features', [
-    'awesome-app.common.features.abstract-entity',
-    'awesome-app.common.features.team-member'
+    'awesome-app.common.features.members',
+    'awesome-app.common.features.teams'
 ]);

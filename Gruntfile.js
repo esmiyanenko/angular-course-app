@@ -340,6 +340,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.extendConfig({
         watch: {
+            options: { livereload: true },
             grunt: {
                 files: ['Gruntfile.js']
             },
@@ -347,7 +348,7 @@ module.exports = function(grunt) {
                 files: ['<%= frontend.src.js.app %>'],
                 tasks: ['jshint', 'copy:app'],
                 options: {
-                    livereload: true,
+                    //livereload: true,
                     cwd: '<%= frontend.src.dir %>'
                 }
             },
@@ -355,7 +356,7 @@ module.exports = function(grunt) {
                 files: ['<%= frontend.src.js.common %>'],
                 tasks: ['jshint', 'copy:common'],
                 options: {
-                    livereload: true,
+                    //livereload: true,
                     cwd: '<%= frontend.src.dir %>'
                 }
             },
@@ -363,21 +364,21 @@ module.exports = function(grunt) {
                 files: ['<%= frontend.src.less.app %>', '<%= frontend.src.less.common %>'],
                 tasks: ['recess'],
                 options: {
-                    livereload: true
+                    //livereload: true
                 }
             },
             tpl: {
                 files: ['<%= frontend.src.tpl %>'],
                 tasks: ['html2js:app'],
                 options: {
-                    livereload: true
+                    //livereload: true
                 }
             },
             html: {
                 files: [ '<%= frontend.src.html %>' ],
                 tasks: [ 'copy:html', 'copy:assets', 'copy:app', 'pack:build' ],
                 options: {
-                    livereload: true,
+                    //livereload: true,
                     cwd: '<%= frontend.src.dir %>'
                 }
             }
@@ -393,7 +394,7 @@ module.exports = function(grunt) {
         'http-server': {
             dev: {
                 root: './build',
-                port: 8080,
+                port: 9999,
                 host: "localhost",
                 cache: 0,
                 showDir : true,

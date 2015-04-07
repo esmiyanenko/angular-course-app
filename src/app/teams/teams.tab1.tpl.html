@@ -1,0 +1,38 @@
+<div class="tab1">
+
+	<div class="row">
+		<div class="col-lg-4">
+			<input id="filter" type="text" ng-model="membersFilter" ng-init="membersFilter = ''" class="form-control" placeholder="search">
+		</div>
+	</div>
+
+	<table class="table table-bordered text-center">
+			
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>job title</th>
+				<th>grade</th>
+				<th>age</th>
+			</tr>
+		</thead>
+
+		<tbody ng-repeat="member in members | filter: {name: membersFilter} | orderBy:'-id':true" ng-model="isOpen" ng-init="isOpen=false">
+			<tr ng-click="isOpen=!isOpen">
+				<td>{{member.id}}</td>
+				<td popover="{{member.grade}} {{member.job}}" popover-trigger="mouseenter" popover-append-to-body="true">{{member.name}}</td>
+				<td>{{member.job}}</td>
+				<td>{{member.grade}}</td>
+				<td>{{member.age}}</td>
+			</tr>
+			<tr ng-if="isOpen">
+	  			<td colspan="5">
+	  				<b>{{member.name}} is a good {{member.job}}</b>
+	  				<button class="btn btn-primary btn-sm pull-right" ng-click="replaceMemberToTeam(member)">add to team</button>
+	  			</td>
+	  		</tr>
+		</tbody>
+
+	</table>
+</div>

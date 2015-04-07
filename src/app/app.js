@@ -7,8 +7,8 @@ angular.module('awesome-app', [
     'templates-app',
     'awesome-app.common',
     'awesome-app.home',
-    'awesome-app.about'
-]).
-config(['$urlRouterProvider', function($urlRouterProvider) {
+    'awesome-app.teams'
+]).config(['$urlRouterProvider', 'MembersProvider', function($urlRouterProvider, membersProvider) {
+	membersProvider.setUrl("assets/membersList10.json");
     $urlRouterProvider.otherwise('/home');
 }]);

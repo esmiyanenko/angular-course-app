@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-lg-4">
+		<input type="text" class="form-control" placeholder="find staff" 
+			ng-model="selected" typeahead="member as member.name for member in members | filter: {name: $viewValue} | limitTo:5">
+	</div>
+	<div class="col-lg-8" ng-transclude></div>
+</div>
+
+<ul style="-webkit-padding-start: 0px;">
+	<li ng-repeat="member in selectedTeamMembers" class="tags tags-old">{{member.name}}</li>
+	<li ng-repeat="member in selectedMembers" class="tags tags-new">{{member.name}}</li>
+</ul>

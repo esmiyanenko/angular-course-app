@@ -11,10 +11,7 @@ angular.module('awesome-app.common.components.header')
             title: '@awesomeHeaderTitle',
             homeState: '@awesomeHeaderHomeState'
         },
-        templateUrl: '../common/components/header/header.tpl.html',
-        link: function linkFn (scope, element, attrs) {
-
-        }
+        templateUrl: '../common/components/header/header.tpl.html'
     };
 
 });
